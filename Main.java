@@ -1,3 +1,8 @@
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.TreeSet;
+
 class Counter {
   int count;
 
@@ -37,6 +42,22 @@ class B extends Thread {
 public class Main {
 
   public static void main(String[] args) {
+
+    Collection<Integer> nums = new TreeSet<Integer>();
+    nums.add(39);
+    nums.add(8);
+    nums.add(60);
+    nums.add(3);
+    nums.add(9);
+    System.out.println(nums);
+
+    Iterator<Integer> values = nums.iterator();
+    values.next();
+
+    while (values.hasNext()) {
+      System.out.println(values.next());
+    }
+
     A obj1 = new A();
     B obj2 = new B();
 
