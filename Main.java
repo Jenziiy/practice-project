@@ -1,3 +1,11 @@
+class Counter {
+  int count;
+
+  public void increment() {
+    count++;
+  }
+}
+
 class A extends Thread {
 
   public void run() {
@@ -32,36 +40,40 @@ public class Main {
     A obj1 = new A();
     B obj2 = new B();
 
-    obj1.start();
-    try {
-      Thread.sleep(2);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-    obj2.start();
+    // obj1.start();
+    // try {
+    // Thread.sleep(2);
+    // } catch (InterruptedException e) {
+    // e.printStackTrace();
+    // }
+    // obj2.start();
+
+    Counter c = new Counter();
 
     Runnable obj3 = () -> {
-      for (int i = 0; i < 100; i++) {
-        System.out.println("hello runnable object");
-        try {
-          Thread.sleep(10);
-        } catch (InterruptedException e) {
-          e.getStackTrace();
-        }
-        ;
+      for (int i = 1; i <= 1000; i++) {
+        c.increment();
+        // System.out.println("hello runnable object");
+        // try {
+        // Thread.sleep(10);
+        // } catch (InterruptedException e) {
+        // e.getStackTrace();
+        // }
+        // ;
       }
       ;
     };
 
     Runnable obj4 = () -> {
-      for (int i = 0; i < 100; i++) {
-        System.out.println("hello runnable object 2");
-        try {
-          Thread.sleep(10);
-        } catch (InterruptedException e) {
-          e.getStackTrace();
-        }
-        ;
+      for (int i = 1; i <= 1000; i++) {
+        c.increment();
+        // System.out.println("hello runnable object 2");
+        // try {
+        // Thread.sleep(10);
+        // } catch (InterruptedException e) {
+        // e.getStackTrace();
+        // }
+        // ;
       }
       ;
     };
@@ -71,6 +83,21 @@ public class Main {
 
     t1.start();
     t2.start();
+
+    try {
+      t1.join();
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    try {
+      t2.join();
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    System.out.println(c.count);
   }
 
 }
