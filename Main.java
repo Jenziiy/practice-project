@@ -1,6 +1,8 @@
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.TreeSet;
 
 class Counter {
@@ -42,6 +44,19 @@ class B extends Thread {
 public class Main {
 
   public static void main(String[] args) {
+
+    Map<String, Integer> students = new HashMap<>();
+    students.put("Jeanine", 100);
+    students.put("Jz", 99);
+    students.put("lalala", 80);
+    students.put("loeloe", 30);
+    students.put("oke", 60);
+
+    System.out.println(students);
+
+    for (String key : students.keySet()) {
+      System.out.println(key + " : " + students.get(key));
+    }
 
     Collection<Integer> nums = new TreeSet<Integer>();
     nums.add(39);
