@@ -1,9 +1,35 @@
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
+
+class Student implements Comparable<Student> {
+  int age;
+  String name;
+
+  public Student(int age, String name) {
+    this.age = age;
+    this.name = name;
+  }
+
+  public String toString() {
+    return "Student [age=]" + age + ", name=" + name + "]";
+  }
+
+  public int compareTo(Student that) {
+    if (this.age > that.age) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+}
 
 class Counter {
   int count;
@@ -44,6 +70,28 @@ class B extends Thread {
 public class Main {
 
   public static void main(String[] args) {
+
+    Comparator<Student> com = new Comparator<Student>() {
+
+      public int compare(Student i, Student j) {
+        if (i.age > j.age)
+          return 1;
+        else
+          return -1;
+      }
+    };
+
+    List<Student> studs = new ArrayList<>();
+    studs.add(new Student(21, "jza"));
+    studs.add(new Student(11, "jzb"));
+    studs.add(new Student(31, "jzc"));
+    studs.add(new Student(28, "jzd"));
+
+    Collections.sort(studs, com);
+
+    for (Student student : studs) {
+      System.out.println(student);
+    }
 
     Map<String, Integer> students = new HashMap<>();
     students.put("Jeanine", 100);
