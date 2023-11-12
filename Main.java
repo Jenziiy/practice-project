@@ -1,7 +1,7 @@
 class Counter {
   int count;
 
-  public void increment() {
+  public synchronized void increment() {
     count++;
   }
 }
@@ -51,7 +51,7 @@ public class Main {
     Counter c = new Counter();
 
     Runnable obj3 = () -> {
-      for (int i = 1; i <= 1000; i++) {
+      for (int i = 1; i <= 10000; i++) {
         c.increment();
         // System.out.println("hello runnable object");
         // try {
@@ -65,7 +65,7 @@ public class Main {
     };
 
     Runnable obj4 = () -> {
-      for (int i = 1; i <= 1000; i++) {
+      for (int i = 1; i <= 10000; i++) {
         c.increment();
         // System.out.println("hello runnable object 2");
         // try {
